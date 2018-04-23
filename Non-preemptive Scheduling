@@ -40,7 +40,7 @@ void findavgTime(struct Process proc[], int n)
     {
         total_wt = total_wt + wt[i];
         total_tat = total_tat + tat[i];
-        printf("%d\t%d\t%d\t%d\n",proc[i].pid,proc[i].bt,wt[i],tat[i]);
+        printf("\t%d\t\t%d\t\t%d\t\t%d\n",proc[i].pid,proc[i].bt,wt[i],tat[i]);
     }
     printf("Average waiting time = %f", (float)total_wt / (float)n);
     printf("\nAverage turn around time = %f", (float)total_tat / (float)n);
@@ -65,21 +65,22 @@ void sort(struct Process *p,int n,int c){
 }
 int main()
 {
-    struct Process proc[] = {{6, 12}, {5, 10}, {2, 4}, {4, 8} , {3,6}};
+    struct Process proc[] = {{6, 12}, {8, 16}, {1, 2}, {4, 8} , {3,6}};
     int n = sizeof proc / sizeof proc[0],i;
 	    
-    printf( "\n\n\t\t\tLJF\t\t\t\t\t\n");
+	
+    printf( "\n\t\t==========================================\n\t\t\tNon-Prempritive Schedule\t\t\t\t\t\n\t\t==========================================\n\n\n");
     sort(proc,n,2);
     printf("Order in which process gets executed\n");
     for (i = 0 ; i < n; i++)
-    printf("%d",proc[i].pid);
+    printf("PID:%d\t",proc[i].pid);
     findavgTime(proc, n);
     
 	printf("\n\n\t\t\tSJF\t\t\t\t\t\n");
     sort(proc,n,1);
     printf("Order in which process gets executed\n");
     for (i = 0 ; i < n; i++)
-    printf("%d",proc[i].pid);
+    printf("PID:%d\t",proc[i].pid);
     findavgTime(proc, n);
     return 0;
 }
